@@ -1,7 +1,8 @@
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
-import MapView, {PROVIDER_OPENSTREETMAP, Marker} from 'react-native-maps';
-import {locations} from './values/data';
+import MapView, {PROVIDER_OPENSTREETMAP, Marker, Heatmap, Polyline, Circle, Polygon} from 'react-native-maps';
+import {locations} from '../values/data';
+import CustomMarker from './CustomMarker';
 
 const OpenStreetMap = () => {
   return (
@@ -16,13 +17,17 @@ const OpenStreetMap = () => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}>
+          
+          <Polygon coordinates={locations} />
+          
         {locations.map(marker => (
           <Marker
             key={marker.latitude}
             coordinate={{latitude: marker.latitude, longitude: marker.longitude}}
             title={marker.title}
-            
-          />
+           >
+            <CustomMarker item={marker}/>
+            </Marker>
         ))}
       </MapView>
     </View>
