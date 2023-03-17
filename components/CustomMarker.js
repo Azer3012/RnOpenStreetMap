@@ -17,14 +17,14 @@ export default CustomMarker
 
 const styles = StyleSheet.create({
     roundMarker:{
-        width:50,
-        height:50,
+        width:30,
+        height:30,
         backgroundColor:'white',
         borderRadius:25
     },
     roundImage:{
-        width:50,
-        height:50,
+        width:30,
+        height:30,
         borderRadius:25,
         resizeMode:'contain'
 
