@@ -4,42 +4,42 @@ export const locations = [
     latitude: 40.3730376, 
     longitude: 49.9535736,
     markerImage:'https://upload.wikimedia.org/wikipedia/commons/2/21/Baku_Subway_logo.jpg',
-    weight: 13,
+    
   },
   {
     title: 'Ehmedli',
     latitude: 40.3855583, 
     longitude: 49.9539452,
     markerImage:'https://upload.wikimedia.org/wikipedia/commons/2/21/Baku_Subway_logo.jpg',
-    weight: 13,
+    
   },
   {
     title: 'Xalqlar Dostlugu',
     latitude:  40.3968851, 
     longitude: 49.9529864,
     markerImage:'https://upload.wikimedia.org/wikipedia/commons/2/21/Baku_Subway_logo.jpg',
-    weight: 19,
+    
   },
   {
     title: 'Neftciler',
     latitude: 40.4111550, 
     longitude: 49.9425681,
     markerImage:'https://upload.wikimedia.org/wikipedia/commons/2/21/Baku_Subway_logo.jpg',
-    weight: 18,
+    
   },
   {
     title: 'Qara Qarayev',
     latitude: 40.41763,
     longitude: 49.93445,
     markerImage:'https://upload.wikimedia.org/wikipedia/commons/2/21/Baku_Subway_logo.jpg',
-    weight: 12,
+   
   },
   {
     title: 'Koroglu',
     latitude: 40.42083,
     longitude: 49.91814,
     markerImage:'https://upload.wikimedia.org/wikipedia/commons/2/21/Baku_Subway_logo.jpg',
-    weight: 2,
+    
   },
   {
     title: 'Ulduz',

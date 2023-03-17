@@ -19,6 +19,7 @@ import MapView, {
 import {locations} from '../values/data';
 import CustomMarker from './CustomMarker';
 import Modal from 'react-native-modal';
+import Dropwdown from './Dropwdown';
 
 const OpenStreetMap = () => {
   const [text, setText] = useState();
@@ -32,60 +33,43 @@ const OpenStreetMap = () => {
     longitudeDelta: 0.0421,
   });
 
-  const fetchPlaces = async () => {
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/search?q=${text}&countrycodes=az&city=Baku&format=json`,
-    );
-    const data = await response.json();
-    setPlaces(data);
-    console.log(data);
-  };
+  // const fetchPlaces = async () => {
+  //   const response = await fetch(
+  //     `https://nominatim.openstreetmap.org/search?q=${text}&countrycodes=az&city=Baku&format=json`,
+  //   );
+  //   const data = await response.json();
+  //   setPlaces(data);
+  //   console.log(data);
+  // };
 
   const handleChange = region => {
-    console.log(region);
+   
     setCordinate({
       ...coordinate,
       latitude: region.latitude,
       longitude: region.longitude,
-    
     });
-   
-    mapRef.current.animateToRegion({...coordinate,zoom: 200,}, 500);
-    setPlaces([])
-    setText('')
+
+    mapRef?.current?.animateToRegion({...coordinate}, 300);
   };
-  console.log(coordinate);
+
+  
+
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput onChangeText={setText} style={styles.input} />
-        <TouchableOpacity onPress={fetchPlaces} style={styles.btn}>
-          <Text style={styles.btnText}>Search</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.searchList}>
-        <FlatList
-          data={places}
-          renderItem={({item}) => (
-            <Text
-              onPress={() =>
-                handleChange({latitude: item.lat, longitude: item.lon})
-              }>
-              {item.display_name}
-            </Text>
-          )}
-        />
-      </View>
-
       <MapView
-      ref={mapRef}
+        ref={mapRef}
         provider={PROVIDER_OPENSTREETMAP}
         style={{flex: 1}}
-        initialRegion={coordinate}
-        // onRegionChange={handleChange}
-        >
+        initialRegion={coordinate}>
         <Polygon coordinates={locations} />
+
+        <Circle
+          center={coordinate}
+          radius={700}
+          fillColor="rgba(0,138,212,0.4)"
+          strokeColor="rgba(0,138,212,0.4)"
+        />
 
         {locations.map(marker => (
           <Marker
@@ -99,6 +83,7 @@ const OpenStreetMap = () => {
           </Marker>
         ))}
       </MapView>
+      <Dropwdown handleChange={handleChange} />
     </View>
   );
 };
